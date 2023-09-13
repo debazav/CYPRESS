@@ -8,5 +8,8 @@
     "run": "cypress run"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.1.0"
+  }
 }
