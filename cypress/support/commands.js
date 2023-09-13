@@ -16,6 +16,17 @@
     cy.get('[data-test="login-button"]').click()
     cy.get('.title').should('have.text', 'Products')
   })
+
+  Cypress.Commands.add('login_with_session', (username, password) => {
+    cy.session([username, password], () => {
+      cy.visit('/')
+      cy.get('#username').type(username)
+        cy.get('#password').type(password)
+        cy.get('#kc-login').click()
+        cy.get('.home-title').should('have.text', 'Logged with success')
+    })
+  })
+//
 //
 //
 // -- This is a child command --
