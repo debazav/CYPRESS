@@ -86,5 +86,21 @@ describe('example to-do app', () => {
         cy.contains('Thank you for your order!')
         cy.get('[data-test="back-to-products"]').should('have.text', 'Back Home')
     })
+    it('example of how to get a text inside a list of li', () => {
+        cy.get('.list-group-item').each(($li) => {
+            cy.wrap($li).find('.col').invoke('text').then(section_name => {
+                console.log(section_name)
+            })
+        })
+    })
+    it('Example of deletion DELETE a SCOPE with sucess, using parent to get ', () => {
+        cy.get(".nav-bar-item").contains('Scope').click()
+        cy.get('.list-group-item').contains('WW/TS/TST').parent().then(($el)=>{
+            cy.wrap($el).as(`scopeToBeDeleted`)
+        })
+        cy.log('@scopeToBeDeleted')
+        cy.get('@scopeToBeDeleted').find('button').click()
+        cy.get('.list-group-item').contains('WW/TS/TST').should("not.exist")
+    })
 
 })  
