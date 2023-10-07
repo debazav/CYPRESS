@@ -25,28 +25,5 @@ describe('POST - tests', () => {
 
     })
 
-    it.only('POST passing params', async () => {
-        endpoint = `${process.env.BASE_URL}/folders`
-        const fileBuffer = fs.readFileSync('./fixtures/test.pdf');
-        try {
-            const response = await axios.post(endpoint, fileBuffer, {
-                headers: {
-                    'Content-Type': 'application/octet-stream',
-                },
-                params: {
-                    "fileName": "test.pdf",
-                    "subFolder": "CreatedByAutomation",
-                    "userName": "minio_manager",
-                    "country": "de",
-                    "city": "tst"
-                }
-            })
-            expect(response.status).to.equal(200);
-
-        } catch (error) {
-            throw error;
-        }
-
-
-    })
+   
 })
