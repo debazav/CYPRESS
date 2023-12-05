@@ -14,7 +14,7 @@ describe('Folders', () => {
       throw error;
     }
   })
-  it('Validade response schema', async () => {
+  it('Validate response schema', async () => {
     console.log('ahahah')
   })
   it('expect an error example - Should not DELETE FILES, ', async () => {
