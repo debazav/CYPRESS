@@ -95,12 +95,46 @@ describe('example to-do app', () => {
     })
     it('Example of deletion DELETE a SCOPE with sucess, using parent to get ', () => {
         cy.get(".nav-bar-item").contains('Scope').click()
-        cy.get('.list-group-item').contains('WW/TS/TST').parent().then(($el)=>{
+        cy.get('.list-group-item').contains('WW/TS/TST').parent().then(($el) => {
             cy.wrap($el).as(`scopeToBeDeleted`)
         })
         cy.log('@scopeToBeDeleted')
         cy.get('@scopeToBeDeleted').find('button').click()
         cy.get('.list-group-item').contains('WW/TS/TST').should("not.exist")
     })
+})
+describe('hidden elements', () => {
+    it.only('with force true', () => {
+        cy.visit('/')
+        cy.get('[data-cy="star"]')
+            .first()
+            .click({ force: true })
+    })
+    it('with invike', () => {
+        cy.get('[data-cy="star"]')
+            .invoke('show')
+            .click()
 
+    });
+    it('WIth trigger', () => {
+        cy.get('[data-cy="board-item"]')
+            .trigger('mouseover')
+        cy.get('[data-cy=star]')
+            .should('be.visible')
+    });
+    it('Changing the DOM', () => {
+
+        cy.get('[data-cy="board-item"]')
+            .trigger('mouseover')
+
+        cy.get('[data-cy=star]')
+            .should('be.visible')
+
+        cy.get('[data-cy="board-item"]')
+            .trigger('mouseout')
+
+        cy.get('[data-cy=star]')
+            .should('not.be.visible')
+
+    })
 })  

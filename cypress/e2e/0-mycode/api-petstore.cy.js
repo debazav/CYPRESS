@@ -16,7 +16,17 @@ describe('Login', () => {
             expect(response.status).to.eq(200)
             expect(response.body)
         })
-
+    })
+    it('POST - ANother example', () => {
+        cy.request({
+            method: 'POST',
+            url: 'https://petstore.swagger.io/v2/',
+            body: {//instert the body here
+            }
+        }).then(response => {
+            expect(response.status).to.eq(200)
+            expect(response.body)
+        })
     })
     it('GET - user', () => {
         cy.request('GET', `https://petstore.swagger.io/v2/user/${username}`).should((response) => {
@@ -49,18 +59,18 @@ describe('Login', () => {
         })
 
     })
-    it('GET - logout', ()=>{
+    it('GET - logout', () => {
         cy.request({
             url: 'https://petstore.swagger.io/v2/user/logout'
-          
-        }).should((response)=> {
+
+        }).should((response) => {
             expect(response.body).property('code').to.be.a('number')
             expect(response.body).property('message').to.be.a('string')
         })
     })
     it('DELETE - user ', () => {
         cy.request('DELETE', `https://petstore.swagger.io/v2/user/${username}`).should((response) => {
-            expect(response.status,{failOnStatusCode: false}).to.eq(200)
+            expect(response.status, { failOnStatusCode: false }).to.eq(200)
         })
     })
 

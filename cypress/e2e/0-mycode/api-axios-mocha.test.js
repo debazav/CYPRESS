@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { expect } = require('chai');
-require('dotenv').config();
+require('dotenv').config(); //can put these snippet in config file
 
 describe('Folders', () => {
   const url = `${process.env.BASE_URL}/folders`
@@ -55,7 +55,7 @@ describe('Folders', () => {
   }),
 
   
-  it.only('should filter the response, create and array with the results', async () => {
+  it('should filter the response, create and array with the results', async () => {
     const specificPath = "Files/ww/cn/"
     const res = await auth.authenticate(logindata.MoreThan3Groups.users[1])
     let token = res.data.access_token
